@@ -1,0 +1,5 @@
+python chroma_subsampling.py --dataset --ratios "4:4:2,4:4:1,4:4:0,4:2:2,4:2:1,4:2:0,4:1:1,4:1:0,3:1:1"
+python chroma_subsampling.py --dataset --average --ratios "4:4:2,4:4:1,4:4:0,4:2:2,4:2:1,4:2:0,4:1:1,4:1:0,3:1:1"
+
+python adaptive_chroma_subsampling.py --dataset --average --ratios "4:4:2,4:2:0"
+python adaptive_chroma_subsampling.py --dataset --average --ratios "4:2:0,3:1:1"
