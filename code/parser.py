@@ -50,7 +50,7 @@ def parser():
 
 def display_help():
     print("-h --help\t\t(display help)")
-    print("-i --images\t\t(use custom images instead of kodak dataset)")
+    print("-i --images\t\t(use custom images from ./custom_images/ instead of kodak dataset)")
     print("-s --show\t\t(show subsampled images)")
     print("-a --average\t\t(use average sampling instead of first value sampling)")
     print("-r --ratios\t\t(specify the list of ratios - example: [-r \"4:4:2,4:2:0,3:1:1\"])")
