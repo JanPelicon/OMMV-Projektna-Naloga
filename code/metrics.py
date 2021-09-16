@@ -40,12 +40,3 @@ def bpp(ratio):
         return 10
     elif ratio == "3:1:1":
         return 10
-
-
-def bpp_adaptive(image):
-    bpp_value = 0
-    for ratio in image["adaptive"]:
-        bpp_value += bpp(ratio)
-    bpp_value = bpp_value / len(image["adaptive"])
-    bpp_value += len(image["adaptive"]) / (image["data"].shape[0] * image["data"].shape[1])
-    return bpp_value
