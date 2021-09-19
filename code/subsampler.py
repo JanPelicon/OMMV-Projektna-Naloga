@@ -7,9 +7,17 @@ from code.metrics import *
 
 from nptyping import NDArray
 
+RATIOS = ["4:4:2", "4:4:1", "4:4:0", "4:2:2", "4:2:1", "4:2:0", "4:1:1", "4:1:0", "3:1:1"]
+ADAPTIVE_THRESHOLD = 6.0
 
 def chroma_subsampling(image: Image, ratio: str, average: bool):
+
     image.subsampled = np.copy(image.image)
+
+    if ratio not in RATIOS:
+        print("Invalid ratio:", ratio)
+        return
+
     image.subsampled = convert_RGB_YCbCr(image.subsampled)
 
     for py in range(0, image.height, 2):
@@ -32,21 +40,25 @@ def chroma_subsampling(image: Image, ratio: str, average: bool):
 
 
 def adaptive_chroma_subsampling(image: Image, ratios: list[str], average: bool):
+
     image.subsampled = np.copy(image.image)
+
+    for ratio in ratios:
+        if ratio not in RATIOS:
+            print("Invalid ratio:", ratio)
+            return
+
     image.subsampled = convert_RGB_YCbCr(image.subsampled)
 
-    THRESHOLD = 6.0
     ratio_1, ratio_2 = 0, 0
     temp_ratio = ""
-
-    print(image.subsampled.shape)
 
     for ry in range(0, image.height, 16):
         for rx in range(0, image.width, 16):
 
             std = np.std(image.image[ry:ry+16, rx:rx+16, 1:2])
 
-            if std > THRESHOLD:
+            if std > ADAPTIVE_THRESHOLD:
                 ratio_1 += 1
                 temp_ratio = ratios[0]
             else:

@@ -35,6 +35,8 @@ class Image:
         self.pnsr = 0
         self.mse = 0
 
+        self.text = ""
+
     def print(self):
         print("path:", self.path)
         print("size: {}x{}".format(self.width, self.height))

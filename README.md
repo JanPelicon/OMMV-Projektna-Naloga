@@ -23,18 +23,22 @@ Second-cycle interdisciplinary Master's study programme Multimedia FRI/FE 2021
 
 Presented at [ERK 2021](https://erk.fe.uni-lj.si/erk21.html).
 
-## Run
+## Instal requirements
 
-Default:
+```sh
+pip install -r requirements.txt
+```
+
+## Run
 
 ```sh
 python chroma_subsampling.py --help
 python adaptive_chroma_subsampling.py --help
 ```
 
-Examples:
+Basic examples:
 
 ```sh
-python chroma_subsampling.py --average --ratios --show "4:4:2,4:2:0,3:1:1"
-python adaptive_chroma_subsampling.py --average --ratios --show "4:2:0,3:1:1"
+python chroma_subsampling.py --average --show --ratios "4:4:2,4:2:0,3:1:1"
+python adaptive_chroma_subsampling.py --average --show --ratios "4:2:0,3:1:1"
 ```
